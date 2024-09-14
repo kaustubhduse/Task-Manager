@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
+import Navbar from "./components/Navbar";
+import EditForm from "./components/EditForm";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <Navbar>
+          <div className="min-h-screen p-4 bg-custom-gradient">
+            <h1 className="text-2xl font-bold text-center mb-4">
+              Task Manager
+            </h1>
+            <Routes>
+              <Route path="/" element={<TaskList />} />
+              <Route path="/add-task" element={<TaskForm />} />
+              <Route path="/edit-task/:id" element={<EditForm />} />
+            </Routes>
+          </div>
+        </Navbar>
+      </Router>
+    </Provider>
   );
-}
+};
 
 export default App;

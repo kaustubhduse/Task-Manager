@@ -1,13 +1,96 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* index.css */
+.bg-custom-gradient {
+  background: linear-gradient(180deg, #e99949 12%, #e81cff 50%, #04b0f4 100%);
+  border: 2px solid transparent;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.boxsi {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* index.css */
+
+/* Define custom fonts using @font-face */
+@font-face {
+  font-family: 'ElevonTwoG';
+  src: url('./fonts/ElevonTwoG.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeistMonoVF';
+  src: url('./fonts/GeistMonoVF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeistVF';
+  src: url('./fonts/GeistVF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Define CSS variables */
+:root {
+  --font-elevon-two-g: 'ElevonTwoG', sans-serif;
+  --font-geist-mono-vf: 'GeistMonoVF', sans-serif;
+  --font-geist-vf: 'GeistVF', sans-serif;
+}
+
+/* Apply fonts */
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-elevon-two-g);
+}
+
+.font-elevon {
+  font-family: var(--font-elevon-two-g);
+}
+
+.font-geist-mono {
+  font-family: var(--font-geist-mono-vf);
+}
+
+.font-geist {
+  font-family: var(--font-geist-vf);
+}
+
+@keyframes fadeInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-left {
+  animation: fadeInFromLeft 1s ease-out;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
 }
