@@ -52,18 +52,18 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
     >
       {/* Stack title, dueDate, and status vertically and center */}
       <div className="flex flex-col items-center md:items-start space-y-2">
-        <span className={`font-semibold truncate`}>
+        <span className="font-semibold text-center md:text-left text-xs md:text-base truncate">
           Task Title:{" "}
-          <span className="md:text-3xl text-2xl">{`${task.title}`}</span>
+          <span className="md:text-3xl text-2xl block truncate">{task.title}</span>
         </span>
 
         <span className="text-center">
-          Due Date: <span className="text-lg">{`${task.dueDate}`}</span>
+          Due Date: <span className="text-lg">{task.dueDate}</span>
         </span>
 
         <span className="text-center flex items-center">
           Status: 
-          <span className="text-lg ml-2">{`${task.status}`}</span>
+          <span className="text-lg ml-2">{task.status}</span>
           {/* Conditionally render green blinking light if status is "In Progress" */}
           {task.status === "In Progress" && (
             <div className="w-4 h-4 bg-green-500 rounded-full ml-2 animate-blink"></div>
@@ -74,13 +74,13 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
         <span className="text-center">
           Priority:{" "}
           <span className={`text-lg ${getPriorityColor(task.priority)}`}>
-            {`${task.priority}`}
+            {task.priority}
           </span>
         </span>
       </div>
 
       {/* Buttons with Framer Motion animations */}
-      <div className="flex flex-row md:flex-row space-x-2 mt-4 md:mt-0 ">
+      <div className="flex flex-row md:flex-row space-x-2 mt-4 md:mt-0">
         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
           <Button type="primary" onClick={handleEdit} className="md:px-5 md:py-5 px-3 py-3">
             <span className="text-xl">Edit</span>
