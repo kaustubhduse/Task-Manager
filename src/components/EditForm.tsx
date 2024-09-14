@@ -11,16 +11,14 @@ import moment from 'moment';
 import dayjs from 'dayjs';
 
 const EditForm: React.FC = () => {
-  const { id } = useParams<{ id: string }>();  // Get task ID from URL parameters
+  const { id } = useParams<{ id: string }>();  
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  // Get the task from the Redux store based on the task ID
   const task = useAppSelector((state) =>
     state.tasks.tasks.find((task) => task.id === id)
   );
 
-  // If task is null, you can handle it by showing a loading state or an error
   const [editableTask, setEditableTask] = useState<Omit<Task, 'id'>>({
     title: '',
     description: '',
@@ -53,6 +51,7 @@ const EditForm: React.FC = () => {
   const priorityMenu = (
     <Menu
       onClick={({ key }) => handleMenuClick('priority', key)}
+      className='font-elevon'
       items={[
         { key: 'Low', label: 'Low' },
         { key: 'Medium', label: 'Medium' },
@@ -64,6 +63,7 @@ const EditForm: React.FC = () => {
   const statusMenu = (
     <Menu
       onClick={({ key }) => handleMenuClick('status', key)}
+      className="font-elevon"
       items={[
         { key: 'In Progress', label: 'In Progress' },
         { key: 'Completed', label: 'Completed' },
@@ -74,29 +74,27 @@ const EditForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   
-    // Ensure task is defined before dispatching the update
     if (task) {
       dispatch(updateTask({
         ...editableTask,
-        id: task.id, // Safely access task.id
+        id: task.id, 
       }));
       navigate('/');
     } else {
       console.error("Task is undefined");
-      // Handle this case appropriately, e.g., show an error message
     }
   };
   
 
   if (!task) {
-    return <div>Loading or Task not found...</div>;  // Handle loading or missing task case
+    return <div className="font-elevon">Loading or Task not found...</div>;  // Handle loading or missing task case
   }
 
   return (
-    <div className="w-full max-w-[1000px] p-8 mx-auto boxsi">
+    <div className="w-full max-w-[1000px] p-8 mx-auto boxsi font-elevon">
       <form onSubmit={handleSubmit} className="flex flex-col gap-7">
         <div className="flex flex-col gap-1">
-          <label htmlFor="title" className="text-black font-semibold text-xs md:text-xl mb-1">
+          <label htmlFor="title" className="text-black font-semibold text-xs md:text-xl mb-1 font-elevon">
             Task Title
           </label>
           <InputBox
@@ -107,7 +105,7 @@ const EditForm: React.FC = () => {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="description" className="text-black font-semibold text-xs md:text-xl mb-1">
+          <label htmlFor="description" className="text-black font-semibold text-xs md:text-xl mb-1 font-elevon">
             Task Description
           </label>
           <InputBox
@@ -116,10 +114,11 @@ const EditForm: React.FC = () => {
             value={editableTask.description}
             onChange={handleChange}
             isTextarea
+           
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="dueDate" className="text-black font-semibold text-xs md:text-xl mb-1">
+          <label htmlFor="dueDate" className="text-black font-semibold text-xs md:text-xl mb-1 font-elevon">
             Due Date
           </label>
           <DatePicker
@@ -130,30 +129,29 @@ const EditForm: React.FC = () => {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="priority" className="text-black font-semibold text-xs md:text-xl mb-1">
+          <label htmlFor="priority" className="text-black font-semibold text-xs md:text-xl mb-1 font-elevon">
             Priority
           </label>
           <Dropdown overlay={priorityMenu} trigger={['click']}>
-            <AntButton className="w-[20%] rounded-lg bg-transparent border border-[#414141] text-white focus:outline-none focus:border-[#e81cff] flex justify-between items-center h-10">
+            <AntButton className="w-[20%] rounded-lg bg-transparent border border-[#414141] text-white focus:outline-none focus:border-[#e81cff] flex justify-between items-center h-10 font-elevon">
               {editableTask.priority} <DownOutlined />
             </AntButton>
           </Dropdown>
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="status" className="text-black font-semibold text-xs md:text-xl mb-1">
+          <label htmlFor="status" className="text-black font-semibold text-xs md:text-xl mb-1 font-elevon">
             Status
           </label>
           <Dropdown overlay={statusMenu} trigger={['click']}>
-            <AntButton className="w-[20%] rounded-lg bg-transparent border border-[#414141] text-white focus:outline-none focus:border-[#e81cff] flex justify-between items-center h-10">
+            <AntButton className="w-[20%] rounded-lg bg-transparent border border-[#414141] text-white focus:outline-none focus:border-[#e81cff] flex justify-between items-center h-10 font-elevon">
               {editableTask.status} <DownOutlined />
             </AntButton>
           </Dropdown>
         </div>
-        <Button />
+        <Button  />
       </form>
     </div>
   );
 };
 
 export default EditForm;
-    
