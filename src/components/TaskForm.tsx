@@ -1,4 +1,3 @@
-// TaskForm.tsx
 import React, { useState } from 'react';
 import { DatePicker, Dropdown, Menu, Button as AntButton } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
@@ -99,6 +98,7 @@ const TaskForm: React.FC = () => {
             placeholder="Due Date"
             className="w-full py-3 px-4 rounded-lg text-white bg-transparent border border-[#414141] placeholder-opacity-50 focus:outline-none focus:border-[#e81cff] font-elevon"
             onChange={handleDateChange}
+            style={{ width: '100%' }} // Ensure DatePicker takes full width
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -107,7 +107,8 @@ const TaskForm: React.FC = () => {
           </label>
           <Dropdown overlay={priorityMenu} trigger={['click']} className="font-elevon">
             <AntButton
-              className="w-[20%] rounded-lg bg-transparent border border-[#414141] text-white focus:outline-none focus:border-[#e81cff] flex justify-between items-center h-10"
+              className="w-full md:w-[20%] rounded-lg bg-transparent border border-[#414141] text-white focus:outline-none focus:border-[#e81cff] flex justify-between items-center h-10"
+              style={{ maxWidth: '100%', textAlign: 'left' }} // Ensure button is full-width on small screens
             >
               {task.priority} <DownOutlined />
             </AntButton>
@@ -119,7 +120,8 @@ const TaskForm: React.FC = () => {
           </label>
           <Dropdown overlay={statusMenu} trigger={['click']} className="font-elevon">
             <AntButton
-              className="w-[20%] rounded-lg bg-transparent border border-[#414141] text-white focus:outline-none focus:border-[#e81cff] flex justify-between items-center h-10"
+              className="w-full md:w-[20%] rounded-lg bg-transparent border border-[#414141] text-white focus:outline-none focus:border-[#e81cff] flex justify-between items-center h-10"
+              style={{ maxWidth: '100%', textAlign: 'left' }} // Ensure button is full-width on small screens
             >
               {task.status} <DownOutlined />
             </AntButton>
