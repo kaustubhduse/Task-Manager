@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Input, Select } from "antd";
-import { SearchOutlined, MenuOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAppDispatch } from "../redux/store";
 import { setFilterOption, setSearchQuery } from "../redux/tasksSlice";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
+import { MenuOutlined } from "@ant-design/icons"; // Hamburger icon
 
 const { Option, OptGroup } = Select;
 
@@ -14,8 +15,10 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const location = useLocation();
   const dispatch = useAppDispatch();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filter, setFilter] = useState<"duedate" | "priority-asc" | "priority-desc" | undefined>(undefined);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [filter, setFilter] = useState<
+    "duedate" | "priority-asc" | "priority-desc" | undefined
+  >(undefined);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Manage menu visibility
 
   useEffect(() => {
     gsap.fromTo(
@@ -27,12 +30,12 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
 
   const taskHandler = () => {
     navigate("/");
-    setIsMenuOpen(false);
+    setIsMenuOpen(false); // Close menu after navigation
   };
 
   const addTaskHandler = () => {
     navigate("/add-task");
-    setIsMenuOpen(false);
+    setIsMenuOpen(false); // Close menu after navigation
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,18 +44,20 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     dispatch(setSearchQuery(value));
   };
 
-  const handleFilterChange = (value: "duedate" | "priority-asc" | "priority-desc" | undefined) => {
+  const handleFilterChange = (
+    value: "duedate" | "priority-asc" | "priority-desc" | undefined
+  ) => {
     setFilter(value);
     dispatch(setFilterOption(value));
   };
 
   const isActive = (path: string) => location.pathname === path;
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen); // Toggle the menu
 
   return (
     <motion.div
-      className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 py-5 relative shadow-lg"
+      className="bg-custom-gradient py-5 relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -61,7 +66,7 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
         {/* Hamburger icon for mobile */}
         <div className="absolute top-0 left-0 md:hidden flex items-center pl-4 pt-3">
           <MenuOutlined
-            className="text-3xl cursor-pointer navbar-item text-white"
+            className="text-3xl cursor-pointer navbar-item"
             onClick={toggleMenu}
           />
         </div>
@@ -69,28 +74,26 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
         {/* Left side: Tasks and Add Task */}
         <div
           className={`${
-            isMenuOpen ? "fixed inset-x-0 top-0 max-h-[10vh] overflow-auto bg-white shadow-lg rounded-lg" : ""
+            isMenuOpen ? "fixed inset-x-0 top-0 max-h-[10vh] overflow-auto" : ""
           } md:static z-50 flex-col md:flex-row md:space-x-7 space-y-2 md:space-y-0 items-center justify-center md:flex ${
             isMenuOpen ? "flex" : "hidden"
           }`}
         >
           <motion.h1
-            className={`text-2xl font-semibold cursor-pointer navbar-item $ {
-              isActive("/") ? "underline text-white" : "text-white"
-            }`}
+            className={`text-2xl font-semibold cursor-pointer navbar-item ${
+              isActive("/") ? "underline" : ""
+            } text-black`} // Ensure visibility on mobile
             onClick={taskHandler}
-            whileHover={{ scale: 1.1, rotateY: 15, perspective: 500 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.1 }}
           >
             Tasks
           </motion.h1>
           <motion.h1
             className={`text-2xl font-semibold cursor-pointer navbar-item ${
-              isActive("/add-task") ? "underline text-white" : "text-white"
-            }`}
+              isActive("/add-task") ? "underline" : ""
+            } text-white md:text-black`} // Ensure visibility on mobile
             onClick={addTaskHandler}
-            whileHover={{ scale: 1.1, rotateY: 15, perspective: 500 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.1 }}
           >
             Add Task
           </motion.h1>
@@ -104,15 +107,13 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
             initial={{ opacity: 1, scale: 1 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            whileHover={{ scale: 1.05 }}
           >
             <Input
               placeholder="Search tasks..."
               prefix={<SearchOutlined />}
               value={searchTerm}
               onChange={handleSearchChange}
-              className="w-full rounded-lg border-none shadow-md focus:outline-none"
-              style={{ backgroundColor: "#ffffff" }}
+              className="w-full"
             />
           </motion.div>
 
@@ -122,14 +123,12 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.05 }}
           >
             <Select
               placeholder="Sort By"
               value={filter}
               onChange={handleFilterChange}
-              className="w-full rounded-lg border-none shadow-md"
-              style={{ backgroundColor: "#ffffff" }}
+              className="w-full"
             >
               <Option value="duedate">Due Date</Option>
               <OptGroup label="Priority">
@@ -154,7 +153,7 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       {/* Overlay to close the menu */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          className="fixed inset-0 boxsi bg-opacity-50 z-40"
           onClick={toggleMenu}
         />
       )}
