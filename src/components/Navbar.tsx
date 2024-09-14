@@ -59,7 +59,7 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     >
       <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-6 px-[4%] relative">
         {/* Hamburger icon for mobile */}
-        <div className="absolute top-0 left-0 md:hidden flex items-center pl-4 pt-3">
+        <div className="absolute top-0 left-0 md:hidden flex items-center pl-4 pt-3 z-50">
           <MenuOutlined
             className="text-3xl cursor-pointer navbar-item text-white"
             onClick={toggleMenu}
@@ -97,10 +97,14 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
         </div>
 
         {/* Right side: Search Bar and Filter */}
-        <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+        <div
+          className={`flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 ${
+            isMenuOpen ? "mt-16" : "" // Margin-top for mobile view when menu is open
+          }`}
+        >
           {/* Search Bar */}
           <motion.div
-            className="w-[300px] navbar-item md:ml-[10%]"  // Added margin-left for mobile view
+            className={`md:w-[300px] w-[250px] ${isMenuOpen ? "mt-4" : "md:ml-[10%]"}`}  // Adjust margin-top when menu is open, margin-left for desktop view
             initial={{ opacity: 1, scale: 1 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -118,7 +122,7 @@ const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
 
           {/* Filter Dropdown */}
           <motion.div
-            className="flex items-center space-x-2 w-[200px] navbar-item"
+            className="flex items-center space-x-2 w-[200px]"
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
