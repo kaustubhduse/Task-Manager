@@ -46,22 +46,27 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   return (
     <motion.div
       ref={cardRef} // Attach ref to the card div for GSAP animations
-      className="relative flex flex-col md:flex-row items-center justify-between p-4 border rounded-md shadow-sm bg-white max-w-[1000px] mx-auto space-y-4 md:space-y-0"
+      className="relative flex flex-col md:flex-row items-start p-4 border rounded-md shadow-sm bg-white max-w-[1000px] mx-auto space-y-4 md:space-y-0"
       whileHover={{ scale: 1.05 }} // Framer hover effect
       whileTap={{ scale: 0.98 }} // Framer tap effect
     >
-      {/* Stack title, dueDate, and status vertically and center */}
-      <div className="flex flex-col items-center md:items-start space-y-2">
-        <span className="font-semibold text-center md:text-left text-xs md:text-base truncate">
-          Task Title:{" "}
-          <span className="md:text-3xl text-2xl block truncate">{task.title}</span>
+      {/* Stack title, dueDate, and status vertically and align to the left */}
+      <div className="flex flex-col items-start space-y-2">
+        <span className="font-semibold text-left text-xs md:text-base">
+          Task Title:
+        </span>
+        <span
+          className="text-lg block w-full"
+          style={{ overflowWrap: "break-word", wordBreak: "break-word" }}
+        >
+          {task.title}
         </span>
 
-        <span className="text-center">
+        <span className="text-left text-sm md:text-base">
           Due Date: <span className="text-lg">{task.dueDate}</span>
         </span>
 
-        <span className="text-center flex items-center">
+        <span className="text-left text-sm md:text-base flex items-center">
           Status: 
           <span className="text-lg ml-2">{task.status}</span>
           {/* Conditionally render green blinking light if status is "In Progress" */}
@@ -71,7 +76,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
         </span>
 
         {/* Display the priority with colored text */}
-        <span className="text-center">
+        <span className="text-left text-sm md:text-base">
           Priority:{" "}
           <span className={`text-lg ${getPriorityColor(task.priority)}`}>
             {task.priority}
