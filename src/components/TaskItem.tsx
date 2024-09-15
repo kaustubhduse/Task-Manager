@@ -84,8 +84,8 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
         </span>
       </div>
 
-      {/* Buttons with Framer Motion animations */}
-      <div className="flex flex-row md:flex-row space-x-2 mt-4 md:mt-0">
+      {/* Buttons with Framer Motion animations aligned to the right */}
+      <div className="ml-auto flex flex-row md:flex-row space-x-2 mt-4 md:mt-0">
         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
           <Button type="primary" onClick={handleEdit} className="md:px-5 md:py-5 px-3 py-3">
             <span className="text-xl">Edit</span>
