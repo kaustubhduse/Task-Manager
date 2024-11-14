@@ -71,7 +71,7 @@ This will create an optimized production build in the `build` folder.
 
 ## 📝 Assumptions and Considerations
 - It is assumed that you are filtering tasks for atleast 2 tasks added
-- You can integrate backend in future.
+- Haven't used local storage for storing the data but can use it in future if needed, instead used redux toolkit for storing data
 
 ---
 
