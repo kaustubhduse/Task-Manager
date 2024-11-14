@@ -1,46 +1,110 @@
-# Getting Started with Create React App
+
+# 📋 Project Name: Task Manager Application
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 🚀 Project Overview
 
-In the project directory, you can run:
+### Key Features:
+- 📌 Feature 1: Task Management 📝
+- 📌 Feature 2: Describe the second feature of your app.
+- 📌 Feature 3: Real-Time State Management with Redux ⚛️
+- 📌 Feature 4: User-Friendly Interface 🎨
+- 📌 Feature 5: Fast and Optimized Performance ⚡
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🛠️ Technologies Used
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: For static typing.
+- **Redux Toolkit**: For state management.
+- **Tailwind CSS**: For utility-first CSS styling.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## ⚙️ Setup and Launch Instructions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+Ensure you have the following installed on your system:
+- **Node.js** (version >= 14)
+- **npm** (version >= 6) or **yarn**
 
-### `npm run build`
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/kaustubhduse/Task-Manager
+cd Task-Manager
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Step 2: Install Dependencies
+```bash
+npm install
+# or
+yarn install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Step 3: Run the Application
+```bash
+npm start
+# or
+yarn start
+```
+The application will be running on [http://localhost:3000](http://localhost:3000).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Step 4: Running Tests (if applicable)
+```bash
+npm test
+# or
+yarn test
+```
 
-### `npm run eject`
+### Step 5: Building for Production
+```bash
+npm run build
+# or
+yarn build
+```
+This will create an optimized production build in the `build` folder.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📝 Assumptions and Considerations
+- It is assumed that you are filtering tasks for atleast 2 tasks added
+- You can integrate backend in future.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📸 Screenshots
+Add some screenshots of your application here:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Screenshot 1](./screenshots/s1.png)
+![Screenshot 2](./screenshots/s2.png)
+![Screenshot 3](./screenshots/s3.png)
+![Screenshot 4](./screenshots/s4.png)
+
+---
+
+## 🔄 Version Control
+### Useful Git Commands:
+- `git clone` - Clone a repository to your local machine.
+- `git pull` - Pull the latest changes from the remote repository.
+- `git add .` - Stage all changes for commit.
+- `git commit -m "Your commit message"` - Commit staged changes.
+- `git push origin main` - Push your changes to the `main` branch.
+
+---
+
+## 📚 Learn More
+- [Create React App Documentation](https://facebook.github.io/create-react-app/docs/getting-started)
+- [React Documentation](https://reactjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+
+---
+
+## 🛠️ Contributing
+Contributions are welcome! Please open an issue or submit a pull request.
+
+---
+

@@ -8,7 +8,6 @@ import { updateTask } from '../redux/tasksSlice';
 import { Task } from '../types/Task';
 import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
-import dayjs from 'dayjs';
 
 const EditForm: React.FC = () => {
   const { id } = useParams<{ id: string }>();  

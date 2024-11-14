@@ -5,7 +5,8 @@ class PriorityQueue<T> {
     private swap(i: number, j: number) {
       [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
     }
-  
+    
+    // to maintain min heap property when we insert a new element
     private heapifyUp(index: number) {
       let parent = Math.floor((index - 1) / 2);
       while (index > 0 && this.heap[index].priority < this.heap[parent].priority) {
@@ -14,7 +15,8 @@ class PriorityQueue<T> {
         parent = Math.floor((index - 1) / 2);
       }
     }
-  
+    
+    // to maintain min heap property when we remove the root element
     private heapifyDown(index: number) {
       const length = this.heap.length;
       let smallest = index;

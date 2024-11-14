@@ -8,7 +8,7 @@ import { addTask } from '../redux/tasksSlice';
 import { Task } from '../types/Task';
 import { useNavigate } from 'react-router-dom';
 
-const TaskForm: React.FC = () => {
+const TaskForm: React.FC = (props) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [task, setTask] = useState<Omit<Task, 'id'>>({
@@ -43,6 +43,7 @@ const TaskForm: React.FC = () => {
         { key: 'Medium', label: 'Medium' },
         { key: 'High', label: 'High' },
       ]}
+  
     />
   );
 
@@ -61,6 +62,7 @@ const TaskForm: React.FC = () => {
     e.preventDefault();
     dispatch(addTask(task));
     setTask({ title: '', description: '', dueDate: '', priority: 'Medium', status: 'In Progress' });
+
     navigate('/');
   };
 
